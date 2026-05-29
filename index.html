@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizens in the Loop — August 7–9, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:        #5c8c8a;
+      --teal-dark:   #2c4f4e;
+      --teal-deep:   #182e2d;
+      --amber:       #c97830;
+      --amber-light: #f5e8d5;
+      --cream:       #f7f3ec;
+      --text:        #1c2b2b;
+      --text-mid:    #4a5f5e;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 22px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(24, 46, 45, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .nav-wordmark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      text-decoration: none;
+    }
+    nav.scrolled .nav-wordmark { color: rgba(255,255,255,0.85); }
+    .nav-meta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-sep { color: rgba(44,79,78,0.3); }
+    nav.scrolled .nav-sep { color: rgba(255,255,255,0.25); }
+
+    /* ── HERO ────────────────────────────────── */
+    .hero {
+      background: white;
+      padding: 72px 56px 20px;
+      border-bottom: 1px solid rgba(44,79,78,0.08);
+    }
+    .hero-content {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .hero-logo { width: min(320px, 36vw); height: 150px; object-fit: cover; object-position: 50% 58%; display: block; flex-shrink: 0; }
+    .hero-subtitle {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(19px, 2vw, 26px);
+      color: var(--teal-dark);
+      max-width: 480px;
+      line-height: 1.4;
+    }
+
+    /* ── SHARED ──────────────────────────────── */
+    .wrap      { max-width: 940px;  margin: 0 auto; }
+    .wrap-wide { max-width: 1120px; margin: 0 auto; }
+
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1.5px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .eyebrow.dim { color: rgba(255,255,255,0.45); }
+
+    h2 {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: clamp(28px, 3.8vw, 42px);
+      line-height: 1.1;
+      color: var(--teal-dark);
+      margin-bottom: 32px;
+      text-wrap: pretty;
+    }
+    h2.on-dark { color: white; }
+
+    .prose {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .prose p + p { margin-top: 20px; }
+
+    /* ── PURPOSE ─────────────────────────────── */
+    .s-purpose {
+      padding: 104px 56px;
+      background: var(--cream);
+    }
+    .purpose-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .purpose-graphic svg { width: 100%; }
+
+    /* ── THEMES ──────────────────────────────── */
+    .s-themes {
+      padding: 104px 56px;
+      background: var(--teal-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .themes-bg-loop {
+      position: absolute;
+      right: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 480px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .themes-hd { margin-bottom: 52px; position: relative; z-index: 1; }
+    .themes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.07);
+      border: 2px solid rgba(255,255,255,0.07);
+      position: relative;
+      z-index: 1;
+    }
+    .theme-card {
+      background: var(--teal-dark);
+      padding: 48px 44px;
+      transition: background 0.25s;
+    }
+    .theme-card:hover { background: #345958; }
+    .theme-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+    .theme-name {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 21px;
+      color: white;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    /* ── THEME QUESTIONS ─────────────────────── */
+    .theme-qs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .theme-qs li {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 14.5px;
+      line-height: 1.62;
+      color: rgba(255,255,255,0.52);
+      padding-left: 14px;
+      border-left: 1.5px solid rgba(255,255,255,0.14);
+    }
+
+    /* ── PEOPLE ──────────────────────────────── */
+    .s-people {
+      padding: 104px 56px;
+      background: white;
+    }
+    .people-intro { margin-bottom: 52px; }
+    .people-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .attendees {
+      list-style: none;
+    }
+    .attendees li {
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(92,140,138,0.13);
+      font-size: 16px;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .attendees li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--amber);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .beliefs-card {
+      background: var(--cream);
+      padding: 36px 40px;
+      border-left: 3px solid var(--teal);
+      position: sticky;
+      top: 100px;
+    }
+    .beliefs-card p {
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.78;
+      color: var(--text-mid);
+    }
+
+    /* ── EXPERIENCE ──────────────────────────── */
+    .s-experience {
+      padding: 104px 56px;
+      background: var(--amber-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-bg-loop {
+      position: absolute;
+      left: -80px;
+      bottom: -60px;
+      width: 420px;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 80px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .chatham-note {
+      margin-top: 28px;
+      padding: 22px 28px;
+      background: rgba(201,120,48,0.1);
+      border-left: 2.5px solid var(--amber);
+    }
+    .chatham-note p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--teal-dark);
+      line-height: 1.5;
+    }
+    .schedule { list-style: none; margin-top: 8px; }
+    .schedule li {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(201,120,48,0.2);
+    }
+    .sched-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      min-width: 70px;
+      padding-top: 2px;
+    }
+    .sched-what {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── COMMITTEE ───────────────────────────── */
+    .s-committee {
+      padding: 104px 56px;
+      background: var(--teal);
+      position: relative;
+      overflow: hidden;
+    }
+    .comm-bg-loop {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .comm-hd { margin-bottom: 52px; position: relative; z-index: 1; }
+    .comm-sub {
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      margin-top: -20px;
+      margin-bottom: 48px;
+    }
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .comm-person {
+      padding-top: 22px;
+      border-top: 1.5px solid rgba(255,255,255,0.22);
+    }
+    .comm-name {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: white;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .comm-org {
+      font-size: 13px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.45;
+    }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer {
+      padding: 60px 56px;
+      background: var(--teal-deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-logo { width: 180px; opacity: 0.5; display: block; }
+    .footer-line {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+    .footer-email {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.45);
+    }
+    .footer-email a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-email a:hover { color: white; border-bottom-color: var(--amber); }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 860px) {
+      nav { padding: 18px 24px; }
+      .hero { padding: 80px 28px 48px; }
+      .hero-content { flex-direction: column; gap: 32px; }
+      .hero-logo { width: min(260px, 68vw) !important; height: 120px !important; }
+      .nav-meta { display: none; }
+      .s-purpose, .s-themes, .s-people,
+      .s-experience, .s-committee, footer {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+      .purpose-layout,
+      .people-layout,
+      .experience-layout { grid-template-columns: 1fr; gap: 48px; }
+      .purpose-graphic { display: none; }
+      .themes-grid { grid-template-columns: 1fr; }
+      .committee-grid { grid-template-columns: repeat(3, 1fr); }
+      .beliefs-card { position: static; }
+    }
+    @media (max-width: 520px) {
+      .committee-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="site-nav">
+    <a href="#" class="nav-wordmark">Citizens in the Loop</a>
+    <span class="nav-meta">Mountain View, CA <span class="nav-sep">·</span> August 7–9, 2026</span>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="uploads/logo1.png" alt="Citizens in the Loop" class="hero-logo">
+      <div class="hero-text">
+        <p class="hero-subtitle">Imagining government of, by, and for the people in the age of AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PURPOSE ── -->
+  <section class="s-purpose" id="purpose">
+    <div class="wrap">
+      <div class="purpose-layout">
+        <div class="purpose-graphic" aria-hidden="true">
+          <svg viewBox="-108 -58 216 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C24,-52 98,-52 98,0 C98,52 24,52 0,0 C-24,-52 -98,-52 -98,0 C-98,52 -24,52 0,0 Z"
+                  stroke="#c97830" stroke-width="2" fill="none" opacity="0.3"/>
+            <path d="M0,0 C22,-44 86,-44 86,0 C86,44 22,44 0,0 C-22,-44 -86,-44 -86,0 C-86,44 -22,44 0,0 Z"
+                  stroke="#5c8c8a" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div>
+          <div class="eyebrow">Our Purpose</div>
+          <div class="prose">
+            <p>AI is reshaping how citizens learn, deliberate, and decide. In the years ahead, how people form beliefs, acquire and wield power, and interact with their government will all change dramatically.</p>
+            <p>Citizens in the Loop is a space to ask:</p>
+          </div>
+          <h2 style="margin-top: 20px; margin-bottom: 24px;">What do we need for the 250-year-old American experiment in democracy to come through this transition stronger (or at least intact)?</h2>
+          <div class="prose">
+            <p>The key questions cut across institutions and disciplines. No single field has the answers, and the people working on these problems rarely sit in the same room. The Loop is an invitation to that room.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THEMES ── -->
+  <section class="s-themes" id="themes">
+    <svg class="themes-bg-loop" viewBox="-110 -55 220 110" fill="none" aria-hidden="true">
+      <path d="M0,0 C26,-50 100,-50 100,0 C100,50 26,50 0,0 C-26,-50 -100,-50 -100,0 C-100,50 -26,50 0,0 Z"
+            stroke="white" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="wrap-wide">
+      <div class="themes-hd">
+        <div class="eyebrow dim">Conference Themes</div>
+        <h2 class="on-dark">Four sets of questions to explore</h2>
+      </div>
+      <div class="themes-grid">
+        <div class="theme-card">
+          <div class="theme-num">01</div>
+          <div class="theme-name">Citizenship &amp; Participation</div>
+          <ul class="theme-qs">
+            <li>Who gets a say in the values AI systems embody?</li>
+            <li>What are the roles and responsibilities of citizens in an AI-infused democracy?</li>
+            <li>What obligations do AI tools and agents have, and to whom?</li>
+            <li>How do we establish identity and personhood in a world where people and agents interact in the same digital spaces?</li>
+            <li>How might AI help scale meaningful human participation in democracy?</li>
+          </ul>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">02</div>
+          <div class="theme-name">The Information Ecosystem</div>
+          <ul class="theme-qs">
+            <li>How do we preserve a shared sense of reality when people learn about the world with individually-personalized agents?</li>
+            <li>How can people control what information they share about themselves?</li>
+          </ul>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">03</div>
+          <div class="theme-name">Power &amp; Money</div>
+          <ul class="theme-qs">
+            <li>What are the implications for self-governance as AI's expansion shifts wealth and power in society?</li>
+            <li>How should fiscal policy — both taxation and social spending — change in response to these shifts?</li>
+            <li>What sources of purpose and meaning will people have if work becomes scarce?</li>
+          </ul>
+        </div>
+        <div class="theme-card">
+          <div class="theme-num">04</div>
+          <div class="theme-name">The Public Sector</div>
+          <ul class="theme-qs">
+            <li>How can the constitutional system of checks and balances maintain meaningful oversight over an AI-empowered government?</li>
+            <li>When does due process imply the right to a human decision?</li>
+            <li>What is the appropriate role for the government in regulating or owning AI models and AI companies?</li>
+            <li>How does the government attract, train, and retain the workforce needed to navigate an age of AI?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PEOPLE ── -->
+  <section class="s-people" id="people">
+    <div class="wrap">
+      <div class="people-intro">
+        <div class="eyebrow">The People</div>
+        <h2 style="max-width:420px;">Who will be there</h2>
+        <p class="prose" style="max-width:560px;">The Loop is invitation-only, aiming for 100 participants with a range of views, expertise, and influence.</p>
+      </div>
+      <div class="people-layout">
+        <ul class="attendees">
+          <li>Researchers, engineers, and executives at the leading AI labs</li>
+          <li>Civic technologists and organizers building tools for participation</li>
+          <li>Scholars of democracy, governance, political economy, and law</li>
+          <li>Funders, founders, and operators backing democratic innovation</li>
+          <li>Journalists, editors, and others shaping the information ecosystem</li>
+          <li>Leaders in federal, state, and local government</li>
+        </ul>
+        <div class="beliefs-card">
+          <p>Attendees share a belief in government by and for the people, an expectation that AI will fundamentally reshape American society, and a willingness to engage constructively across divergent perspectives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section class="s-experience" id="experience">
+    <svg class="exp-bg-loop" viewBox="-110 -55 220 110" fill="none" aria-hidden="true">
+      <path d="M0,0 C26,-50 100,-50 100,0 C100,50 26,50 0,0 C-26,-50 -100,-50 -100,0 C-100,50 -26,50 0,0 Z"
+            stroke="#c97830" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="wrap">
+      <div class="eyebrow">The Experience</div>
+      <div class="experience-layout">
+        <div>
+          <h2 style="max-width:420px;">What you can expect</h2>
+          <div class="prose">
+            <p>The schedule is built around the conversations that are harder to make happen at larger conferences — small-group workshops, structured debates, and unstructured time to find the right people to learn from and think with. Sessions will skew interactive.</p>
+          </div>
+          <div class="chatham-note">
+            <p>The entire conference will be held under <strong>Chatham House rule</strong>, giving participants room to go beyond their public positions.</p>
+          </div>
+        </div>
+        <div>
+          <ul class="schedule">
+            <li>
+              <span class="sched-day">Friday</span>
+              <span class="sched-what">Evening kickoff reception</span>
+            </li>
+            <li>
+              <span class="sched-day">Saturday</span>
+              <span class="sched-what">Full day of sessions and workshops</span>
+            </li>
+            <li>
+              <span class="sched-day">Sunday</span>
+              <span class="sched-what">Morning sessions, wraps by midday</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMMITTEE ── -->
+  <section class="s-committee" id="committee">
+    <svg class="comm-bg-loop" viewBox="-110 -55 220 110" fill="none" aria-hidden="true">
+      <path d="M0,0 C26,-50 100,-50 100,0 C100,50 26,50 0,0 C-26,-50 -100,-50 -100,0 C-100,50 -26,50 0,0 Z"
+            stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M0,0 C20,-40 80,-40 80,0 C80,40 20,40 0,0 C-20,-40 -80,-40 -80,0 C-80,40 -20,40 0,0 Z"
+            stroke="white" stroke-width="1" fill="none" opacity="0.5"/>
+    </svg>
+    <div class="wrap-wide">
+      <div class="comm-hd">
+        <div class="eyebrow dim">Steering Committee</div>
+        <h2 class="on-dark" style="margin-bottom:14px;">Organized by the Golden Gate Institute for AI</h2>
+        <p class="comm-sub">with guidance from:</p>
+      </div>
+      <div class="committee-grid">
+        <div class="comm-person">
+          <div class="comm-name">Dean Ball</div>
+          <div class="comm-org">Foundation for American Innovation</div>
+        </div>
+        <div class="comm-person">
+          <div class="comm-name">Divya Siddarth</div>
+          <div class="comm-org">Collective Intelligence Project</div>
+        </div>
+        <div class="comm-person">
+          <div class="comm-name">Alexandra Reeve-Givens</div>
+          <div class="comm-org">Center for Democracy and Technology</div>
+        </div>
+        <div class="comm-person">
+          <div class="comm-name">Danielle Allen</div>
+          <div class="comm-org">Harvard Berkman-Klein Center for Internet and Society</div>
+        </div>
+        <div class="comm-person">
+          <div class="comm-name">Andrew Sorota</div>
+          <div class="comm-org">Office of Eric Schmidt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="footer">
+    <img src="uploads/logo1 bg trans.png" alt="Citizens in the Loop" class="footer-logo">
+    <p class="footer-line">
+      Presented by the Golden Gate Institute for AI
+      &nbsp;·&nbsp;
+      Mountain View, CA
+      &nbsp;·&nbsp;
+      August 7–9, 2026
+    </p>
+    <p class="footer-email">Questions? Email <a href="mailto:theloop@goldengateinstitute.org">theloop@goldengateinstitute.org</a></p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

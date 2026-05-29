@@ -1,0 +1,36 @@
+﻿Citizens in the Loop
+A working conference on AI and the future of democracy. 
+Mountain View, CA · August 7–9, 2026
+Our purpose
+AI is reshaping how citizens learn, deliberate, and decide. In the years ahead, how people form beliefs, acquire and wield power, and interact with their government will all change dramatically.
+Citizens in the Loop (The Loop, for short!) is a space to ask: What do we need for the 250-year-old American experiment in democracy to come through this transition stronger (or at least intact)?
+The key questions cut across institutions and disciplines. We have grouped them into four themes, which will form the basis for conference sessions:
+Citizenship & participation: Who gets a say in the values AI systems embody? What are the roles / responsibilities of citizens in an AI-infused democracy? What obligations do AI tools/agents have, and to whom? How do we establish identity and personhood in a world where people and agents interact in the same digital spaces? How might AI help scale meaningful human participation in democracy?
+
+
+The information ecosystem: How do we preserve a shared sense of reality when people learn about the world with individually-personalized agents? How can people control what information they share about themselves?
+
+
+Power and money: What are the implications for self-governance as AI’s expansion shifts wealth and power in society? How should fiscal policy - both taxation and social spending - change in response to these shifts? What sources of purpose and meaning will people have if work becomes scarce?
+
+
+The public sector: How can the constitutional system of checks and balances maintain meaningful oversight over an AI-empowered government? When does due process imply the right to a human decision? What is the appropriate role for the government in regulating or owning AI models and AI companies? How does the government attract, train, and retain the workforce needed to navigate an age of AI?
+No single field has the answers, and the people working on these problems rarely sit in the same room. The Loop is an invitation to that room.
+The people
+The Loop is invitation-only, aiming for 100 participants with a range of views, expertise, and influence. Attendees will include:
+* Researchers, engineers, and executives at the leading AI labs
+* Civic technologists and organizers building tools for participation
+* Scholars of democracy, governance, political economy, and law
+* Funders, founders, and operators backing democratic innovation
+* Journalists, editors, and others shaping the information ecosystem
+* Leaders in federal, state, and local government
+Attendees share a belief in government by and for the people, an expectation that AI will fundamentally reshape American society, and a willingness to engage constructively across divergent perspectives.
+The experience
+The Loop is small by design. The schedule is built around the conversations that are harder to make happen at larger conferences — small-group workshops, structured debates, and unstructured time to find the right people to learn from and think with. Sessions will skew interactive.
+The event will kick off Friday evening, continue all day Saturday, and wrap by midday Sunday. The entire conference will be held under Chatham House rule, giving participants room to go beyond their public positions.
+Steering committee
+The Golden Gate Institute for AI has asked this group to help us think through how to structure The Loop so it’s as useful as possible:
+* Dean Ball, Foundation for American Innovation
+* Divya Siddarth, Collective Intelligence Project
+* Alexandra Reeve-Givens, Center for Democracy and Technology
+* Danielle Allen, Harvard Berkman-Klein Center for Internet and Society
